@@ -1,119 +1,37 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>PPL remaining 18 hours</title>
-  <style>
-    :root {
-      color-scheme: light dark;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    }
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      background: #0b0b0c;
-      color: #f7f7f8;
-    }
-
-    main {
-      width: min(92vw, 520px);
-      padding: 28px;
-      border: 1px solid rgba(255,255,255,.14);
-      border-radius: 22px;
-      background: rgba(255,255,255,.06);
-      box-shadow: 0 20px 60px rgba(0,0,0,.35);
-      text-align: center;
-    }
-
-    h1 {
-      margin: 0 0 10px;
-      font-size: 1.45rem;
-      line-height: 1.2;
-    }
-
-    p {
-      margin: 10px 0;
-      color: #d7d7dc;
-      line-height: 1.45;
-    }
-
-    .dates {
-      margin: 18px 0;
-      padding: 14px;
-      border-radius: 14px;
-      background: rgba(255,255,255,.08);
-      font-weight: 600;
-    }
-
-    button, a.button {
-      display: inline-block;
-      margin-top: 14px;
-      padding: 14px 18px;
-      border: 0;
-      border-radius: 14px;
-      background: #ffffff;
-      color: #111;
-      font-size: 1rem;
-      font-weight: 700;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .small {
-      margin-top: 16px;
-      font-size: .88rem;
-      color: #b8b8c0;
-    }
-  </style>
-</head>
-<body>
-  <main>
-    <h1>PPL remaining 18 hours</h1>
-    <p>This page will attempt to download the calendar file automatically.</p>
-
-    <div class="dates">
-      May 7, 2026<br>
-      May 11, 2026
-    </div>
-
-    <button id="downloadBtn" type="button">Download / Add to Calendar</button>
-
-    <p class="small">
-      On iPhone, Safari may require you to tap the button, then approve the calendar import.
-    </p>
-  </main>
+  <!-- Redirects iOS/macOS to Apple Calendar using the hosted .ics file -->
+  <meta http-equiv="refresh"
+        content="0; url=webcal://raw.githubusercontent.com/JRDN-R/ICS/main/PPL-remaining-18-hours.ics">
 
   <script>
-    const icsText = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Jordan Rapp//PPL Remaining 18 Hours//EN\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:ppl-remaining-18-hours-20260507@jordan-rapp\r\nDTSTAMP:20260501T180000Z\r\nDTSTART;VALUE=DATE:20260507\r\nDTEND;VALUE=DATE:20260508\r\nSUMMARY:PPL remaining 18 hours\r\nDESCRIPTION:Remaining Paid Parental Leave. Use-or-lose date: 05/12/2026.\r\nTRANSP:OPAQUE\r\nSTATUS:CONFIRMED\r\nEND:VEVENT\r\nBEGIN:VEVENT\r\nUID:ppl-remaining-18-hours-20260511@jordan-rapp\r\nDTSTAMP:20260501T180000Z\r\nDTSTART;VALUE=DATE:20260511\r\nDTEND;VALUE=DATE:20260512\r\nSUMMARY:PPL remaining 18 hours\r\nDESCRIPTION:Remaining Paid Parental Leave. Use-or-lose date: 05/12/2026.\r\nTRANSP:OPAQUE\r\nSTATUS:CONFIRMED\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n';
-    const fileName = "PPL_remaining_18_hours.ics";
+    const WEBCAL_URL = "webcal://raw.githubusercontent.com/JRDN-R/ICS/main/PPL-remaining-18-hours.ics";
+    const HTTPS_ICS  = "https://raw.githubusercontent.com/JRDN-R/ICS/main/PPL-remaining-18-hours.ics";
 
-    function downloadCalendar() {
-      const blob = new Blob([icsText], { type: "text/calendar;charset=utf-8" });
-      const url = URL.createObjectURL(blob);
-
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = fileName;
-      link.rel = "noopener";
-      document.body.appendChild(link);
-      link.click();
-
-      setTimeout(() => {
-        URL.revokeObjectURL(url);
-        link.remove();
-      }, 3000);
-    }
-
-    document.getElementById("downloadBtn").addEventListener("click", downloadCalendar);
-
-    // Auto-attempt. iOS/Safari may block this unless the user taps the button.
-    window.addEventListener("load", () => {
-      setTimeout(downloadCalendar, 600);
-    });
+    // Try redirect immediately. Fallback links are below if Safari blocks it.
+    window.location.replace(WEBCAL_URL);
+    setTimeout(() => { window.location.href = WEBCAL_URL; }, 250);
   </script>
+</head>
+
+<body style="font-family:-apple-system,system-ui,Arial,sans-serif;padding:20px;line-height:1.45;">
+  <p>Opening Calendar…</p>
+
+  <p>
+    <a href="webcal://raw.githubusercontent.com/JRDN-R/ICS/main/PPL-remaining-18-hours.ics">
+      Subscribe / Open in Apple Calendar
+    </a>
+  </p>
+
+  <p>
+    <a href="https://raw.githubusercontent.com/JRDN-R/ICS/main/PPL-remaining-18-hours.ics">
+      Open / Download .ics
+    </a>
+  </p>
 </body>
 </html>
