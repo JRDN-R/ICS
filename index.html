@@ -3,34 +3,50 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>PPL Remaining 18 Hours</title>
 
-  <!-- IMPORTANT: use RAW githubusercontent, not the github.com/blob link -->
-  <meta http-equiv="refresh"
-        content="0; url=webcal://raw.githubusercontent.com/JRDN-R/ICS/39883906dfe51dde8e288f6602ff961c9bc38e76/PPL-remaining-18-hours.ics">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="May 2026 Family Calendar" />
+  <meta property="og:description" content="May 2026 calendar invite" />
+  <meta property="og:url" content="https://jrdn-r.github.io/ICS/" />
+  <meta name="twitter:card" content="summary" />
+
+  <title>May 2026 Family Calendar</title>
+
+  <meta http-equiv="refresh" content="1; url=webcal://raw.githubusercontent.com/JRDN-R/ICS/main/may-2026-calendar.ics" />
 
   <script>
-    const WEBCAL_URL = "webcal://raw.githubusercontent.com/JRDN-R/ICS/39883906dfe51dde8e288f6602ff961c9bc38e76/PPL-remaining-18-hours.ics";
-    const HTTPS_ICS  = "https://raw.githubusercontent.com/JRDN-R/ICS/39883906dfe51dde8e288f6602ff961c9bc38e76/PPL-remaining-18-hours.ics";
+    const WEBCAL_URL = "webcal://raw.githubusercontent.com/JRDN-R/ICS/main/may-2026-calendar.ics";
+    const HTTPS_ICS = "https://raw.githubusercontent.com/JRDN-R/ICS/main/may-2026-calendar.ics";
 
-    // Try redirect immediately (some browsers block; links below are fallback)
-    window.location.replace(WEBCAL_URL);
-    setTimeout(() => { window.location.href = WEBCAL_URL; }, 250);
+    function downloadIcs() {
+      const link = document.createElement("a");
+      link.href = HTTPS_ICS;
+      link.download = "may-2026-calendar.ics";
+      link.rel = "noopener";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      downloadIcs();
+      setTimeout(() => { window.location.href = WEBCAL_URL; }, 500);
+    });
   </script>
 </head>
 
-<body style="font-family:-apple-system,system-ui,Arial,sans-serif;padding:20px;">
-  <p>Opening Calendar…</p>
+<body style="font-family:-apple-system,system-ui,Arial,sans-serif;padding:20px;line-height:1.45;">
+  <p>Opening May 2026 Family Calendar…</p>
 
   <p>
-    <a href="webcal://raw.githubusercontent.com/JRDN-R/ICS/39883906dfe51dde8e288f6602ff961c9bc38e76/PPL-remaining-18-hours.ics">
-      Subscribe (Apple Calendar)
+    <a href="webcal://raw.githubusercontent.com/JRDN-R/ICS/main/may-2026-calendar.ics">
+      Subscribe / Open in Calendar
     </a>
   </p>
 
   <p>
-    <a href="https://raw.githubusercontent.com/JRDN-R/ICS/39883906dfe51dde8e288f6602ff961c9bc38e76/PPL-remaining-18-hours.ics">
-      Open / Download .ics
+    <a href="https://raw.githubusercontent.com/JRDN-R/ICS/main/may-2026-calendar.ics" download="may-2026-calendar.ics">
+      Download .ics
     </a>
   </p>
 </body>
